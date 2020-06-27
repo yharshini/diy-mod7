@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="906fa727-6c75-4dfc-b93d-a0e471cf37a3" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="7ac6f0c1-2352-4f0a-b76e-0e33fef19327" >
+		<http:request-connection host="mu.learn.mulesoft.com" port="80" />
+	</http:request-config>
+	<http:request-config name="HTTP_Request_configuration1" doc:name="HTTP Request configuration" doc:id="9bd9249e-7611-4854-a6cc-6e4a52ad214f" responseTimeout="300000">
+		<http:request-connection host="${http.host}" port="${http.port}" connectionIdleTimeout="300000"/>
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="0723d8de-d515-4fbf-a59f-163d01caf4d7" file="${env}-properties.yaml" />
+	</mule>
